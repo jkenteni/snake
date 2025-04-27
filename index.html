@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐍 Snake</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="container">
+    <h1>🐍 Snake - @Jkenteni</h1>
+    
+    <canvas id="game"></canvas>
+
+    <div id="scoreboard">
+      <div>Pontuação: <span id="score">0</span></div>
+      <div>Recorde: <span id="highscore">0</span></div>
+      <div>Tempo: <span id="timer">00:00</span></div>
+    </div>
+
+    <div id="controls" class="hidden">
+        <button id="up">⬆️</button>
+        <button id="left">⬅️</button>
+        <button id="down">⬇️</button>
+        <button id="right">➡️</button>
+      </div>
+      
+
+    <div id="game-over" class="hidden">
+        <h2>Game Over</h2>
+        <p id="final-score"></p>
+        <button id="restart-btn">Recomeçar</button>
+      </div>
+      
+
+    <!-- Áudios -->
+    <audio id="eat-sound" src="eat.mp3"></audio>
+    <audio id="gameover-sound" src="gameover.mp3"></audio>
+    <audio id="powerup-sound" src="powerup.mp3"></audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
