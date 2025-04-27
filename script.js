@@ -13,18 +13,14 @@ const upBtn = document.getElementById('up');
 const downBtn = document.getElementById('down');
 const leftBtn = document.getElementById('left');
 const rightBtn = document.getElementById('right');
-
 const timerEl = document.getElementById('timer');
 
 const box = 20;
 canvas.width = 20 * box;
 canvas.height = 20 * box;
 
-
 let timerInterval;
 let secondsElapsed = 0;
-
-
 let snake = [{ x: 10 * box, y: 10 * box }];
 let direction = 'RIGHT';
 let food = randomFood();
@@ -37,7 +33,6 @@ let highscore = localStorage.getItem('highscore') || 0;
 highscoreEl.innerText = highscore;
 
 const controls = document.getElementById('controls');
-
 if (window.innerWidth <= 600) {
   controls.classList.remove('hidden');
 }
@@ -133,10 +128,9 @@ function updateGame() {
       finalScoreEl.innerText = `Você fez ${score} pontos!`;
       gameOverEl.classList.remove('hidden');
       setTimeout(() => {
-        gameOverEl.classList.add('show'); // adiciona o fade-in depois de garantir que está visível
+        gameOverEl.classList.add('show');
       }, 10);
-      
-    }, 500); // 500ms de atraso para o som
+    }, 500);
     if (score > highscore) {
       localStorage.setItem('highscore', score);
       highscoreEl.innerText = score;
@@ -165,40 +159,36 @@ function updateGame() {
 }
 
 function restartGame() {
-    snake = [{ x: 10 * box, y: 10 * box }];
-    direction = 'RIGHT';
-    food = randomFood();
-    score = 0;
-    speed = 150;
-    scoreEl.innerText = score;
-    clearInterval(game);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    gameOverEl.classList.remove('show'); // tira o fade-in
-    gameOverEl.classList.add('hidden'); // esconde de novo
-    game = setInterval(updateGame, speed);
-    clearInterval(timerInterval); // Para o timer antigo
-    startTimer(); // Começa de novo
+  snake = [{ x: 10 * box, y: 10 * box }];
+  direction = 'RIGHT';
+  food = randomFood();
+  score = 0;
+  speed = 150;
+  scoreEl.innerText = score;
+  clearInterval(game);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  gameOverEl.classList.remove('show');
+  gameOverEl.classList.add('hidden');
+  game = setInterval(updateGame, speed);
+  clearInterval(timerInterval);
+  startTimer();
+}
 
-  }
+function startTimer() {
+  clearInterval(timerInterval);
+  secondsElapsed = 0;
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    secondsElapsed++;
+    updateTimerDisplay();
+  }, 1000);
+}
 
-  function startTimer() {
-    clearInterval(timerInterval); // Sempre limpa qualquer timer antigo
-    secondsElapsed = 0; // Reseta o contador
-    updateTimerDisplay(); // Atualiza para 00:00 logo no início
-    timerInterval = setInterval(() => {
-      secondsElapsed++;
-      updateTimerDisplay();
-    }, 1000); // A cada 1 segundo
-  }
-  
-  function updateTimerDisplay() {
-    const minutes = Math.floor(secondsElapsed / 60);
-    const seconds = secondsElapsed % 60;
-    timerEl.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  }
-  
-  
-  
+function updateTimerDisplay() {
+  const minutes = Math.floor(secondsElapsed / 60);
+  const seconds = secondsElapsed % 60;
+  timerEl.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
 
 // Start the game
 game = setInterval(updateGame, speed);

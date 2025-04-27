@@ -1,100 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Oswald:wght@200..700&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background: linear-gradient(135deg, #121212, #1f1f1f);
-    font-family: 'Arial', sans-serif;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  #container {
-    text-align: center;
-    position: relative;
-  }
-  
-  h1 {
-    margin-bottom: 10px;
-  }
-  
-  #game {
-    background: #222;
-    border: 3px solid #00FF00;
-    box-shadow: 0 0 20px #00FF00;
-  }
-  
-  #scoreboard {
-    margin: 15px 0;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-  }
-  
-  #controls {
-    margin: 10px 0;
-  }
-  
-  #controls button {
-    background: #333;
-    border: 2px solid #00FF00;
-    color: #00FF00;
-    font-size: 2rem;
-    margin: 5px;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  #controls button:hover {
-    background: #00FF00;
-    color: #111;
-  }
-  
-  #timer {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#container {
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-family: "Oswald", sans-serif;
+  opacity: 0.7;
+  font-size: 4rem;
+}
+
+div {
+  font-family: "Tuffy", sans-serif;
+}
+
+#game {
+  background: #1C1C1C;
+  border: 3px solid #2E7D32;
+  box-shadow: 0 0 20px #2E7D32;
+}
+
+#scoreboard {
+  margin: 15px 0;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+#controls {
+  margin: 10px 0;
+}
+
+#controls button {
+  background: #333;
+  border: 2px solid #2E7D32;
+  color: #2E7D32;
+  font-size: 2rem;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#controls button:hover {
+  background: #2E7D32;
+  color: #111;
+}
+
+#timer {
   font-size: 1.5rem;
   margin-top: 10px;
 }
 
 #game-over {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.9);
-    color: #fff;
-    padding: 30px 50px;
-    font-size: 1.8rem;
-    border: 3px solid #ff0000;
-    border-radius: 15px;
-    box-shadow: 0 0 20px #ff0000;
-    z-index: 10;
-    text-align: center;
-    opacity: 0; /* começa invisível */
-    pointer-events: none; /* impede clique quando invisível */
-    transition: opacity 0.5s ease; /* animação suave */
-  }
-  
-  #game-over.show {
-    opacity: 1;
-    pointer-events: auto; /* libera clique */
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  padding: 30px 50px;
+  font-size: 1.8rem;
+  border: 3px solid #C62828;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #C62828;
+  z-index: 10;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#game-over.show {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 #game-over h2 {
   margin-bottom: 15px;
-  color: #ff0000;
+  color: #C62828;
   font-size: 2rem;
 }
 
 #game-over button {
-  background: #ff0000;
+  background: #C62828;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -104,77 +113,82 @@
   transition: 0.3s;
 }
 
-#controls {
-    display: none; /* Escondido no desktop */
-  }
-  
-
 #game-over button:hover {
-  background: #ff4d4d;
+  background: red;
   transform: scale(1.1);
 }
 
 .hidden {
   display: none;
 }
-@media (max-width: 600px) {
 
-    #game {
-        width: 90vw;
-        height: 90vw;
-        max-width: 360px;
-        max-height: 360px;
-      }
-      
-    /* No mobile, mostra os controles */
-    #controls {
-      display: grid;
-      grid-template-areas:
-        ". up ."
-        "left down right";
-      grid-template-columns: 60px 60px 60px;
-      grid-template-rows: 60px 60px;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-    }
-  
-    #up {
-      grid-area: up;
-    }
-  
-    #down {
-      grid-area: down;
-    }
-  
-    #left {
-      grid-area: left;
-    }
-  
-    #right {
-      grid-area: right;
-    }
-  
-    #controls button {
-      width: 60px;
-      height: 60px;
-      font-size: 2rem;
-      background: #222;
-      border: 3px solid #00FF00;
-      color: #00FF00;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #00FF00;
-      transition: 0.2s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    #controls button:hover {
-      background: #00FF00;
-      color: #111;
-      transform: scale(1.1);
-    }
+@media (max-width: 600px) {
+  #game {
+    width: 90vw;
+    height: 90vw;
+    max-width: 360px;
+    max-height: 360px;
   }
-  
+
+  #controls {
+    display: grid;
+    grid-template-areas:
+      ". up ."
+      "left down right";
+    grid-template-columns: 60px 60px 60px;
+    grid-template-rows: 60px 60px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  #up {
+    grid-area: up;
+  }
+
+  #down {
+    grid-area: down;
+  }
+
+  #left {
+    grid-area: left;
+  }
+
+  #right {
+    grid-area: right;
+  }
+
+  #controls button {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    background: #222;
+    border: 3px solid #2E7D32;
+    color: #2E7D32;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #2E7D32;
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #controls button:hover {
+    background: #00FF00;
+    color: #111;
+    transform: scale(1.1);
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  z-index: 1000;
+}

@@ -3,40 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🐍 Snake</title>
+  <title>SNAKE</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="container">
-    <h1>🐍 Snake - @Jkenteni</h1>
-    
+    <h1>SNAKE</h1>
+
     <canvas id="game"></canvas>
 
     <div id="scoreboard">
-      <div>Pontuação: <span id="score">0</span></div>
-      <div>Recorde: <span id="highscore">0</span></div>
-      <div>Tempo: <span id="timer">00:00</span></div>
+      <div>PONTUAÇÃO: <span id="score">0</span></div>
+      <div>RECORDE: <span id="highscore">0</span></div>
+      <div>TEMPO: <span id="timer">00:00</span></div>
     </div>
 
     <div id="controls" class="hidden">
-        <button id="up">⬆️</button>
-        <button id="left">⬅️</button>
-        <button id="down">⬇️</button>
-        <button id="right">➡️</button>
-      </div>
-      
+      <button id="up">⬆️</button>
+      <button id="left">⬅️</button>
+      <button id="down">⬇️</button>
+      <button id="right">➡️</button>
+    </div>
 
     <div id="game-over" class="hidden">
-        <h2>Game Over</h2>
-        <p id="final-score"></p>
-        <button id="restart-btn">Recomeçar</button>
-      </div>
-      
+      <h2>GAME OVER</h2>
+      <p id="final-score"></p>
+      <button id="restart-btn">RECOMEÇAR</button>
+    </div>
 
     <!-- Áudios -->
     <audio id="eat-sound" src="eat.mp3"></audio>
     <audio id="gameover-sound" src="gameover.mp3"></audio>
     <audio id="powerup-sound" src="powerup.mp3"></audio>
+  </div>
+
+  <div class="footer">
+    by @jkenteni🌙 | @4_arthurj🐉 | @jeanravel👾
   </div>
 
   <script src="script.js"></script>
